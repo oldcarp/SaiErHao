@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.WizarddetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.saierhao.generator.domain.Wizarddetail">
+            <id property="ID" column="ID" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="stats" column="Stats" jdbcType="VARCHAR"/>
+            <result property="soulmark" column="Soulmark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,name,Stats,
+        Soulmark
+    </sql>
+</mapper>

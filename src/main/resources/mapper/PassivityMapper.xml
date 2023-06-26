@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.PassivityMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.saierhao.generator.domain.Passivity">
+            <id property="passivityID" column="passivityID" jdbcType="VARCHAR"/>
+            <result property="ID" column="ID" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="passivityName" column="passivityName" jdbcType="VARCHAR"/>
+            <result property="passivityEffect" column="passivityEffect" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        passivityID,ID,name,
+        passivityName,passivityEffect
+    </sql>
+</mapper>
