@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ * 表头
  * @TableName fairybook
  */
 @TableName(value ="fairybook")

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ * 技能
  * @TableName skill
  */
 @TableName(value ="skill")

@@ -28,7 +28,7 @@ public class getPassivity implements PageProcessor {
         //精灵名称
 
         //魂印名
-        String passivityName = all.get(0).substring(all.get(0).indexOf("\">")+2,all.get(0).indexOf("</span>"));
+        String passivityName = all.get(0).substring(all.get(0).indexOf("魂印是")+3,all.get(0).indexOf("，"));
         System.out.println("魂印名称："+passivityName);
         //魂印效果
     }
@@ -39,6 +39,6 @@ public class getPassivity implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new getPassivity()).addUrl("http://news.4399.com/news/seerwenda/981767.html").run();
+        Spider.create(new getPassivity()).addUrl("http://news.4399.com/news/seerwenda/790288.html").run();
     }
 }

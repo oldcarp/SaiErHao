@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ * 被动
  * @TableName passivity
  */
 @TableName(value ="passivity")

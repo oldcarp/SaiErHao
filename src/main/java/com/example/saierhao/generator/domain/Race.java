@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ * 种族值
  * @TableName race
  */
 @TableName(value ="race")

@@ -47,7 +47,15 @@ public class SingleSpriteTest implements PageProcessor {
         System.out.println(name.replace("<dt>","").replace("</dt>",""));
         System.out.println("属性："+stats.replace("<i>","").replace("</i>",""));
         //魂印地址
-        System.out.println("魂印地址：http:"+passivity.substring(passivity.indexOf("//"),passivity.indexOf("html")+4));
+        if (null != passivity) {
+            if (passivity.indexOf("//") < 0) {
+                System.out.println(passivity.substring(passivity.indexOf("<span>")+6,passivity.indexOf("</span>")));
+            }else {
+                System.out.println("魂印地址：http:"+passivity.substring(passivity.indexOf("//"),passivity.indexOf("html")+4));
+            }
+        }else {
+            System.out.println("魂印地址：无");
+        }
         //迭代输出种族值
         System.out.println("种族值：");
         raceValue.forEach((k,y) -> {
@@ -70,7 +78,7 @@ public class SingleSpriteTest implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/981682.htm").run();
+        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/900212.htm").run();
     }
 
     /*

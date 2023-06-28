@@ -1,17 +1,26 @@
-package com.example.saierhao.grab;
+package com.example.saierhao.utils;
 
+import com.example.saierhao.generator.domain.Fairybook;
+import com.example.saierhao.generator.service.FairybookService;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-import java.util.*;
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author
  * @date 2023年06月15日 11:00
  */
-public class SearlePage implements PageProcessor {
+@Component
+public class SearlePageUtils implements PageProcessor {
+
+    @Resource
+    private FairybookService fairybookService;
+
     @Override
     public void process(Page page) {
         //精灵技能明细地址
@@ -23,14 +32,12 @@ public class SearlePage implements PageProcessor {
         //精灵ID
         String id = UUID.randomUUID().toString().replaceAll("-","");
         //整合
-        List<Map<String,String>> mapList = new ArrayList<>();
+        Fairybook fairybook = new Fairybook();
         for (int i = 0; i < allImg.size(); i++){
-            Map<String,String> map = new HashMap<>();
-            map.put("ID",UUID.randomUUID().toString().replaceAll("-",""));
-            map.put("name",processName(allImg.get(i)));
-            map.put("address",processingAddress(all.get(i)));
-            mapList.add(map);
-            System.out.println(mapList);
+            fairybook.setID(UUID.randomUUID().toString().replaceAll("-",""));
+            fairybook.setName(processName(allImg.get(i)));
+            fairybook.setAddress(processingAddress(all.get(i)));
+            fairybookService.save(fairybook);
         }
 
     }
@@ -40,9 +47,6 @@ public class SearlePage implements PageProcessor {
         return Site.me().setSleepTime(100).setRetryTimes(3);
     }
 
-    public static void main(String[] args) {
-        Spider.create(new SearlePage()).addUrl("http://www.4399.com/flash/seer.htm").run();
-    }
     /*
     处理名称格式
      */

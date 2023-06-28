@@ -8,7 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
+ * 明细相关
  * @TableName wizarddetail
  */
 @TableName(value ="wizarddetail")
