@@ -78,7 +78,7 @@ public class SingleSpriteTest implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/900212.htm").run();
+        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/839539.htm").run();
     }
 
     /*

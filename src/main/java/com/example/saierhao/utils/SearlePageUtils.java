@@ -19,25 +19,21 @@ import java.util.UUID;
 public class SearlePageUtils implements PageProcessor {
 
     @Resource
-    private FairybookService fairybookService;
+    private EntityQueue entityQueue;
 
     @Override
     public void process(Page page) {
         //精灵技能明细地址
         List<String> all = page.getHtml().css("div#jlist>ul>li>a").all();
-
         //精灵名称
         List<String> allImg = page.getHtml().css("div#jlist>ul>li>a>img").all();
-
-        //精灵ID
-        String id = UUID.randomUUID().toString().replaceAll("-","");
         //整合
-        Fairybook fairybook = new Fairybook();
         for (int i = 0; i < allImg.size(); i++){
+            Fairybook fairybook = new Fairybook();
             fairybook.setID(UUID.randomUUID().toString().replaceAll("-",""));
             fairybook.setName(processName(allImg.get(i)));
             fairybook.setAddress(processingAddress(all.get(i)));
-            fairybookService.save(fairybook);
+            entityQueue.addFairyBook(fairybook);
         }
 
     }
