@@ -17,9 +17,6 @@ import javax.annotation.Resource;
 @Controller
 public class WizarddetailUtils implements PageProcessor {
 
-    @Resource
-    private WizarddetailService wizarddetailService;
-
     @Override
     public void process(Page page) {
         //获取精灵名称
