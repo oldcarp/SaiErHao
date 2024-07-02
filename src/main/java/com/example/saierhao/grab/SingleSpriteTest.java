@@ -3,6 +3,7 @@ package com.example.saierhao.grab;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 import java.util.HashMap;
@@ -23,14 +24,14 @@ public class SingleSpriteTest implements PageProcessor {
         //获取精灵种族值 -- 分布
         List<String> raceValue2 = page.getHtml().css("div.race>table>tbody>tr>td").all();
         //精灵种族值
-        Map<String,String> raceValue = new HashMap<>();
-        for (int i = 0; i <raceValue1.size(); i++){
+        Map<String, String> raceValue = new HashMap<>();
+        for (int i = 0; i < raceValue1.size(); i++) {
             raceValue
                     .put(
                             raceValue1
-                                    .get(i).replace("<td>","").replace("</td>",""),
+                                    .get(i).replace("<td>", "").replace("</td>", ""),
                             raceValue2
-                                    .get(i).replace("<td>","").replace("</td>","")
+                                    .get(i).replace("<td>", "").replace("</td>", "")
                     );
         }
         //获取精灵属性
@@ -44,22 +45,22 @@ public class SingleSpriteTest implements PageProcessor {
         //计数器
         int count = 1;
         //输出精灵名称 及 属性
-        System.out.println(name.replace("<dt>","").replace("</dt>",""));
-        System.out.println("属性："+stats.replace("<i>","").replace("</i>",""));
+        System.out.println(name.replace("<dt>", "").replace("</dt>", ""));
+        System.out.println("属性：" + stats.replace("<i>", "").replace("</i>", ""));
         //魂印地址
         if (null != passivity) {
             if (passivity.indexOf("//") < 0) {
-                System.out.println(passivity.substring(passivity.indexOf("<span>")+6,passivity.indexOf("</span>")));
-            }else {
-                System.out.println("魂印地址：http:"+passivity.substring(passivity.indexOf("//"),passivity.indexOf("html")+4));
+                System.out.println(passivity.substring(passivity.indexOf("<span>") + 6, passivity.indexOf("</span>")));
+            } else {
+                System.out.println("魂印地址：http:" + passivity.substring(passivity.indexOf("//"), passivity.indexOf("html") + 4));
             }
-        }else {
+        } else {
             System.out.println("魂印地址：无");
         }
         //迭代输出种族值
         System.out.println("种族值：");
-        raceValue.forEach((k,y) -> {
-            System.out.println(k+":"+y);
+        raceValue.forEach((k, y) -> {
+            System.out.println(k + ":" + y);
         });
         //迭代输出技能
         for (String s : all) {
@@ -78,17 +79,18 @@ public class SingleSpriteTest implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/839539.htm").run();
+//        Spider.create(new SingleSpriteTest()).addUrl("https://news.4399.com/gonglue/seer/tujian/839539.htm").run();
+        Spider.create(new SingleSpriteTest()).setDownloader(new HttpClientDownloader()).addUrl("https://news.4399.com/gonglue/seer/tujian/957863.htm").thread(5).run();
     }
 
     /*
-    检测技能tr并替换
+    检测tr并替换
      */
     private String detectTrAndReplace(String tr, int count) {
         if (tr.startsWith("<tr>")) {
-            tr = tr.replace("<tr>", "第" + count + "个技能");
+            tr = tr.replace("<tr>", "第" + count + "个");
         } else {
-            tr = tr.replaceAll("<tr class=\"odd\"> ", "第" + count + "个技能");
+            tr = tr.replaceAll("<tr class=\"odd\"> ", "第" + count + "个");
         }
         if (tr.indexOf("<td") > 1) {
             tr = tr.replace(tr.substring(tr.indexOf("<td"), tr.indexOf("</span>") + 7), "");

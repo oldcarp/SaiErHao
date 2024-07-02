@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author OldCarp
 * @description 针对表【fairybook】的数据库操作Service实现
-* @createDate 2023-06-26 15:26:29
+* @createDate 2024-07-02 14:03:33
 */
 @Service
 public class FairybookServiceImpl extends ServiceImpl<FairybookMapper, Fairybook>

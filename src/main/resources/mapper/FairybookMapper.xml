@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.FairybookMapper">
+<mapper namespace="com.example.saierhao.generator.mapper.FairybookMapper">
 
     <resultMap id="BaseResultMap" type="com.example.saierhao.generator.domain.Fairybook">
             <id property="ID" column="ID" jdbcType="VARCHAR"/>

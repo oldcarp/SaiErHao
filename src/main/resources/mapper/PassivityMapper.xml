@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.PassivityMapper">
+<mapper namespace="com.example.saierhao.generator.mapper.PassivityMapper">
 
     <resultMap id="BaseResultMap" type="com.example.saierhao.generator.domain.Passivity">
             <id property="passivityID" column="passivityID" jdbcType="VARCHAR"/>
