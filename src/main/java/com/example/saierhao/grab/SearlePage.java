@@ -1,7 +1,7 @@
 package com.example.saierhao.grab;
 
 import com.example.saierhao.generator.domain.Fairybook;
-import com.example.saierhao.generator.service.FairybookService;
+import com.example.saierhao.generator.mapper.FairybookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
@@ -22,7 +22,7 @@ import java.util.*;
 public class SearlePage implements PageProcessor {
 
     @Autowired
-    private FairybookService fairybookService;
+    private FairybookMapper fairybookMapper;
 
     @Override
     public void process(Page page) {
@@ -104,6 +104,6 @@ public class SearlePage implements PageProcessor {
         fairybook.setID(s);
         fairybook.setName(s1);
         fairybook.setAddress(s2);
-        fairybookService.save(fairybook);
+        fairybookMapper.insert(fairybook);
     }
 }
